@@ -1,7 +1,7 @@
 import type { Cliente } from './types'
 
 const clientes : Cliente[] = [
-    {nome:'João', idade:30} //colocar clientes já cadastrados
+    {nome:'João', idade:30} //colocar clientes já cadastrados conforme enunciado projeto
 ];
 function cadastrarCliente(cliente: Cliente): void {
     clientes.push(cliente);
