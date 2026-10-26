@@ -1,18 +1,20 @@
 import promptSync = require('prompt-sync');
 import { cadastrarCliente, listarClientes } from "./clientes";
 import { cadastrarProduto, listarProduto } from "./produtos";
-import type { Cliente, Produto } from "./types";
+import { fazerCompra, listarCompras } from './carrinho';
 
 const prompt = promptSync({ sigint: true });
 
-let menu: number; // Alterado para let para atualizar a cada ciclo do loop
+let menu: number;
 do {
-    console.log('\n--- MENU ---');
+    console.log('\n ===>> ESCOLHA UMA OPÇÃO <<===');
     console.log('1-Cadastrar Cliente');
     console.log('2-Listar Clientes');
     console.log('3-Cadastrar Produto');
     console.log('4-Ver Produto');
-    console.log('0-Sair do Sistema');
+    console.log('5-Fazer compras/carrinho');
+    console.log('6-Ver Compras');
+    console.log('9-Sair do Sistema');
 
     menu = Number(prompt('Digite a opção desejada: '));
 
@@ -31,11 +33,19 @@ do {
             console.log('Seus produtos são: ');
             console.log(listarProduto());
             break;
-        case 0:
+        case 5:
+            console.log('Fazer compras/carrinho: ');
+            fazerCompra();
+            break;
+        case 6:
+            console.log('Suas compras no carrinho são: ');
+            listarCompras();
+            break;
+        case 9:
             console.log('Você saiu do Sistema ');
             break;
         default:
             console.log('DIGITE UMA OPÇÃO VÁLIDA: ');
     }
 
-} while (menu !== 0);
+} while (menu !== 9);

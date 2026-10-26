@@ -12,10 +12,15 @@ function cadastrarCliente(): void {
     const emailInput: string = String(prompt('Digite o e-mail do cliente: '));
 
     if (!validaTexto(idInput) || !validaTexto(nomeInput) || !validaTexto(emailInput)) {
-        console.log('Dados do cliente inválidos.');
+        console.log('Dados inválidos.');
         return;
     }
 
+    if (clientes.find((cliente: Cliente) => cliente.id === idInput)) {
+        console.log('Já existe cliente com esse ID');
+        return;
+    }
+    
     const novoCliente: Cliente = {
         id: idInput,
         nome: nomeInput,
@@ -30,7 +35,12 @@ function listarClientes(): Cliente[] {
     return clientes;
 }
 
+function buscarClientePorId(id: string): Cliente | undefined {
+    return clientes.find(cliente => cliente.id === id);
+}
+
 export {
     cadastrarCliente,
-    listarClientes
+    listarClientes,
+    buscarClientePorId
 }

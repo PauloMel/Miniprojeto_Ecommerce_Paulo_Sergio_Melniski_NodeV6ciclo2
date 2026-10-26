@@ -6,11 +6,16 @@ const prompt = promptSync({ sigint: true });
 
 const produtos: Produto[] = [];
 
-function cadastrarProduto() {
+function cadastrarProduto(): void {
     const idInput: string = String(prompt('Digite o ID do produto: '));
     const categoriaInput: string = String(prompt('Digite a categoria do produto: '));
     const nomeInput: string = String(prompt('Digite o nome do produto: '));
     const quantidadeInput: number = Number(prompt('Digite a quantidade do produto: '));
+
+    if (!validaTexto(idInput) || !validaTexto(categoriaInput) || !validaTexto(nomeInput)) {
+        console.log('Dados do produto inválidos.');
+        return;
+    }
 
     if (produtos.find((produto: Produto) => produto.id === idInput)) {
         console.log('Já existe produto com esse ID');
@@ -28,13 +33,17 @@ function cadastrarProduto() {
 } 
 
 function adicionarProduto(produto: Produto): boolean {
-    if (!validaTexto(produto.id) || !validaTexto(produto.nome) || !validaTexto(produto.categoria)) {
-        console.log('Dados do produto inválidos.');
-        return false;
-    }
-    produtos.push(produto); // Corrigido de produto.push para produtos.push
+    produtos.push(produto);
     console.log('Produto cadastrado com sucesso!');
     return true;
+}
+
+function filtrarProdutoPorNome(nome: string): Produto[] {
+    return produtos.filter((produto: Produto) => produto.nome === nome);
+}
+
+function filtrarProdutoPorCategoria(categoria: string): Produto[] {
+    return produtos.filter((produto: Produto) => produto.categoria === categoria);
 }
 
 function listarProduto(): Produto[] {
@@ -43,5 +52,7 @@ function listarProduto(): Produto[] {
 
 export {
     cadastrarProduto,
-    listarProduto
+    listarProduto,
+    filtrarProdutoPorNome,
+    filtrarProdutoPorCategoria
 }

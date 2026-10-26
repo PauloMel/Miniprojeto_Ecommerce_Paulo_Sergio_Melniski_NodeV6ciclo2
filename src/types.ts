@@ -5,13 +5,19 @@ type Cliente = {
 }
 
 type Produto = {
-    id: string; // Corrigido de number para string para compatibilidade com o helper
+    id: string;
     categoria: string;
     nome: string;
     quantidade: number;
 }
 
+type Carrinho = {
+    idProduto: string;
+    quantidadeComprada: number;
+}
+
 export type {
     Cliente,
-    Produto
+    Produto,
+    Carrinho
 }
