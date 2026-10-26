@@ -1,18 +1,36 @@
-import type { Cliente } from './types'
+import type { Cliente } from "./types";
+import { validaTexto } from "./helper";
+import promptSync = require("prompt-sync");
 
-const clientes : Cliente[] = [
-    {nome:'João', idade:30} //colocar clientes já cadastrados conforme enunciado projeto
-];
-function cadastrarCliente(cliente: Cliente): void {
-    clientes.push(cliente);
+const prompt = promptSync({ sigint: true });
+
+const clientes: Cliente[] = [];
+
+function cadastrarCliente(): void {
+    const idInput: string = String(prompt('Digite o ID do cliente: '));
+    const nomeInput: string = String(prompt('Digite o nome do cliente: '));
+    const emailInput: string = String(prompt('Digite o e-mail do cliente: '));
+
+    if (!validaTexto(idInput) || !validaTexto(nomeInput) || !validaTexto(emailInput)) {
+        console.log('Dados do cliente inválidos.');
+        return;
+    }
+
+    const novoCliente: Cliente = {
+        id: idInput,
+        nome: nomeInput,
+        email: emailInput
+    };
+
+    clientes.push(novoCliente);
+    console.log('Cliente cadastrado com sucesso!');
 }
 
-function verClientes(): Cliente[] {
+function listarClientes(): Cliente[] {
     return clientes;
 }
 
 export {
     cadastrarCliente,
-    verClientes
-
+    listarClientes
 }

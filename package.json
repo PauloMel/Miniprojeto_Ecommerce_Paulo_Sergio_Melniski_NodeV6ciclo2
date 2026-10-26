@@ -16,5 +16,13 @@
   },
   "devDependencies": {
     "@types/prompt-sync": "^4.2.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PauloMel/Miniprojeto_Ecommerce_Paulo_Sergio_Melniski_NodeV6ciclo2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/PauloMel/Miniprojeto_Ecommerce_Paulo_Sergio_Melniski_NodeV6ciclo2/issues"
+  },
+  "homepage": "https://github.com/PauloMel/Miniprojeto_Ecommerce_Paulo_Sergio_Melniski_NodeV6ciclo2#readme"
 }
