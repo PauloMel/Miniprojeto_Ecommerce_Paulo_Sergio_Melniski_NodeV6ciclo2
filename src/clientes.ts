@@ -4,7 +4,23 @@ import promptSync = require("prompt-sync");
 
 const prompt = promptSync({ sigint: true });
 
-const clientes: Cliente[] = [];
+const clientes: Cliente[] = [{
+        id: '1',
+        nome: 'Paulo Sérgio',
+        email: 'paulo@gmail.com'
+    },
+    {
+        id: '2',
+        nome: 'Ana Souza',
+        email: 'ana@gmail.com'
+    },
+    {
+        id: '3',
+        nome: 'Carlos Eduardo',
+        email: 'carlos@gmail.com'
+    }
+];
+
 
 function cadastrarCliente(): void {
     const idInput: string = String(prompt('Digite o ID do cliente: '));
@@ -12,12 +28,12 @@ function cadastrarCliente(): void {
     const emailInput: string = String(prompt('Digite o e-mail do cliente: '));
 
     if (!validaTexto(idInput) || !validaTexto(nomeInput) || !validaTexto(emailInput)) {
-        console.log('Dados inválidos.');
+        console.log('Dados do cliente inválidos.');
         return;
     }
 
     if (clientes.find((cliente: Cliente) => cliente.id === idInput)) {
-        console.log('Já existe cliente com esse ID');
+        console.log('Já existe cliente com esse ID.');
         return;
     }
     

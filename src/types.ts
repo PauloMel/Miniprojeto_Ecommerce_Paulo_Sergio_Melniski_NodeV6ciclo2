@@ -8,16 +8,29 @@ type Produto = {
     id: string;
     categoria: string;
     nome: string;
-    quantidade: number;
+    preco: number;      // Preço com suporte a 2 casas decimais
+    quantidade: number; // Estoque
 }
 
-type Carrinho = {
+type CarrinhoItem = {
     idProduto: string;
+    nomeProduto: string;
     quantidadeComprada: number;
+    precoUnitario: number;
+    subtotal: number;   // Subtotal do item (quantidade * preço unitário)
+}
+
+type Pedido = {
+    idPedido: string;
+    idCliente: string;
+    itens: CarrinhoItem[];
+    valorTotal: number; // Valor total formatado com 2 casas decimais
+    data: string;       // Data do pedido
 }
 
 export type {
     Cliente,
     Produto,
-    Carrinho
+    CarrinhoItem,
+    Pedido
 }
