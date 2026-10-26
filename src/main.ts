@@ -18,7 +18,7 @@ do {
     console.log('7 - Adicionar Produto ao Carrinho');
     console.log('8 - Ver Carrinho Atual');
     console.log('9 - Finalizar Pedido');
-    console.log('10 - Listar Pedidos Realizados');
+    console.log('10 - Relatório de Pedidos Realizados');
     console.log('0 - Sair do Sistema');
 
     menu = Number(prompt('Digite a opção desejada: '));
